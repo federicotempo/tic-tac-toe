@@ -83,6 +83,9 @@ const Game = (() => {
         for (let i = 0; i < 9; i++) {
             Gameboard.update(i, "");
         }
+        Gameboard.render();
+        gameOver = false;
+        document.querySelector("#message").innerHTML = "";
     }
 
     return { start, handleClick, restart };
