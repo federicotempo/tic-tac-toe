@@ -1,4 +1,3 @@
-
 *,
 *::before,
 *::after {
@@ -58,30 +57,110 @@ h6 {
     isolation: isolate;
 }
 
-#gameboard {
+body {
+    font-family: Arial, sans-serif;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 300px;
     justify-content: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #f4f4f9;
 }
 
-.square {
-    display: flex;
-    flex-wrap: wrap;
-    float: left;
-    border: 1px solid black;
-    justify-content: center;
-    align-items: center;
-    width: 25%;
-    height: 30%;
-    text-align: center;
-    font-size: 80px;
+h1 {
+    color: #007bff; /* Azul como los botones */
+    font-size: 2rem; /* Tamaño moderado */
+    font-weight: bold; /* Resalta el título */
+    text-align: center; /* Centrado */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Toque estético con sombra */
+    margin-bottom: 10px;
 }
 
-#controls,
 #message {
+    margin-top: 5px; /* Reduce espacio superior */
+    margin-bottom: 10px; /* Reduce espacio inferior */
+    font-size: 1.2rem; /* Tamaño de texto más compacto */
+    font-weight: bold;
+    color: #28a745;
     text-align: center;
-    margin: 20px 0;
+    min-height: 25px; /* Reduce altura mínima */
+}
+
+#gameboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px; /* Reduce el espacio entre las celdas */
+    width: 80vw; /* Ajusta tamaño general del tablero */
+    max-width: 350px; /* Reduce tamaño máximo */
+    height: 80vw;
+    max-height: 350px;
+    margin-bottom: 15px; /* Reduce espacio debajo del tablero */
+    background-color: #ddd;
+}
+
+#gameboard div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid #ccc; /* Reduce el grosor del borde */
+    font-size: 1.5rem; /* Reduce tamaño del texto */
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
+
+#gameboard div:hover {
+    background-color: #f0f0f0;
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espaciado vertical entre los grupos de elementos */
+}
+
+#controls .inputs-row {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    gap: 10px; /* Espaciado entre inputs */
+}
+
+#controls input {
+    width: auto;
+    max-width: 45%; /* Ajusta para que los inputs sean más pequeños */
+    padding: 8px; /* Reduce padding */
+    font-size: 0.9rem; /* Reduce tamaño de texto */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#controls .buttons-row {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    gap: 10px; /* Espaciado entre botones */
+}
+
+#controls button {
+    padding: 8px 15px; /* Reduce padding de los botones */
+    font-size: 0.9rem; /* Reduce tamaño del texto */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#controls button:hover {
+    background-color: #0056b3;
+}
+
+#result-display {
+    margin-top: 10px;
+    font-size: 1rem; /* Reduce el tamaño del texto */
 }

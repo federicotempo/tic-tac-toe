@@ -1,9 +1,14 @@
 const displayController = (() => {
-    const renderMessage = (message) => {
+    const renderResultMessage = (message) => {
         document.querySelector("#message").innerHTML = message;
     }
 
-    return { renderMessage };
+    const renderNameMessage = (message) => {
+        document.querySelector("#message").innerHTML = message;
+    }
+
+
+    return { renderResultMessage };
 })();
 
 const Gameboard = (() => {
@@ -70,10 +75,10 @@ const Game = (() => {
 
         if (checkForWin(Gameboard.getGameboard(), players[currentPlayerIndex].mark)) {
             gameOver = true;
-            displayController.renderMessage(`${players[currentPlayerIndex].name} wins!`);
+            displayController.renderResultMessage(`${players[currentPlayerIndex].name} wins!`);
         } else if (checkForTie(Gameboard.getGameboard())) {
             gameOver = true;
-            displayController.renderMessage("It's a tie");
+            displayController.renderResultMessage("It's a tie");
         }
 
         currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
@@ -83,9 +88,11 @@ const Game = (() => {
         for (let i = 0; i < 9; i++) {
             Gameboard.update(i, "");
         }
-        Gameboard.render();
         gameOver = false;
         document.querySelector("#message").innerHTML = "";
+        document.querySelector("#player1").value = "";
+        document.querySelector("#player2").value = "";
+        document.querySelector("#gameboard").innerHTML = "";
     }
 
     return { start, handleClick, restart };
