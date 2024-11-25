@@ -49,11 +49,15 @@ const Game = (() => {
     let gameOver;
 
     const start = () => {
-        if (checkName()) {
+        if (checkName() === "emptyNames") {
+            displayController.renderNameMessage("Choose names for both Players");
+            return;
+        } else if (checkName() === "equalNames") {
             displayController.renderNameMessage("Choose another name for Player 2");
             return;
         } else {
             displayController.renderNameMessage("");
+
         }
 
         players = [
@@ -135,8 +139,13 @@ function checkForTie(board) {
 function checkName() {
     const player1Name = document.querySelector("#player1").value;
     const player2Name = document.querySelector("#player2").value;
-    if(player1Name === player2Name) {
-        return true;
+
+    if (player1Name === "" || player2Name === "") {
+        return "emptyNames";
+    }
+
+    if (player1Name === player2Name) {
+        return "equalNames";
     }
 }
 
