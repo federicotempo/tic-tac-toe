@@ -8,7 +8,7 @@ const displayController = (() => {
     }
 
 
-    return { renderResultMessage };
+    return { renderResultMessage, renderNameMessage };
 })();
 
 const Gameboard = (() => {
@@ -49,6 +49,13 @@ const Game = (() => {
     let gameOver;
 
     const start = () => {
+        if (checkName()) {
+            displayController.renderNameMessage("Choose another name for Player 2");
+            return;
+        } else {
+            displayController.renderNameMessage("");
+        }
+
         players = [
             createPlayer(document.querySelector("#player1").value, "X"),
             createPlayer(document.querySelector("#player2").value, "O")
@@ -63,6 +70,7 @@ const Game = (() => {
     }
 
     const handleClick = (event) => {
+
         if (gameOver) {
             return;
         }
@@ -124,6 +132,13 @@ function checkForTie(board) {
     return board.every(cell => cell !== "");
 }
 
+function checkName() {
+    const player1Name = document.querySelector("#player1").value;
+    const player2Name = document.querySelector("#player2").value;
+    if(player1Name === player2Name) {
+        return true;
+    }
+}
 
 const restartButton = document.querySelector("#restart-button");
 restartButton.addEventListener("click", () => {
