@@ -10,4 +10,6 @@ It uses factory functions to create players and IIFEs are used to manage the boa
 IIFEs are used to encapsulate unique instances, like the game controller.
 The logic was then integrated with the DOM to make it playable in the browser.
 
+The project design is responsive.
+
 Live preview: https://federicotempo.github.io/tic-tac-toe/
