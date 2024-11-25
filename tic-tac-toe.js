@@ -28,7 +28,7 @@ const createPlayer = (name, mark) => {
     return {
         name,
         mark
-    }
+    };
 }
 
 const Game = (() => {
@@ -60,7 +60,10 @@ const Game = (() => {
 
         if (checkForWin(Gameboard.getGameboard(), players[currentPlayerIndex].mark)) {
             gameOver = true;
-            alert(`${players[currentPlayerIndex].name} won!`)
+            alert(`${players[currentPlayerIndex].name} won!`);
+        } else if (checkForTie(Gameboard.getGameboard())) {
+            gameOver = true;
+            alert("It's a Tie!");
         }
 
         currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
@@ -72,7 +75,7 @@ const Game = (() => {
         }
     }
 
-    return { start, handleClick, restart }
+    return { start, handleClick, restart };
 })();
 
 function checkForWin(board) {
@@ -92,10 +95,15 @@ function checkForWin(board) {
         if (board[a] && board[a] === board[b] && board[a] === board[c]) {
             return true;
         }
-    
+
     }
     return false;
 }
+
+function checkForTie(board) {
+    return board.every(cell => cell !== "");
+}
+
 
 const restartButton = document.querySelector("#restart-button");
 restartButton.addEventListener("click", () => {
