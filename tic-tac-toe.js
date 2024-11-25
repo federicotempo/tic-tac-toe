@@ -88,9 +88,11 @@ const Game = (() => {
         if (validations.checkForWin(Gameboard.getGameboard(), players[currentPlayerIndex].mark)) {
             gameOver = true;
             displayController.renderResultMessage(`${players[currentPlayerIndex].name} wins!`);
+            setTimeout(restart, 2000);
         } else if (validations.checkForTie(Gameboard.getGameboard())) {
             gameOver = true;
             displayController.renderResultMessage("It's a tie");
+            setTimeout(restart, 2000);
         }
 
         currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
